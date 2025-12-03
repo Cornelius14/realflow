@@ -3,10 +3,12 @@
 import type React from "react"
 
 import { Button } from "@/components/ui/button"
-import { ChevronRight, Clock, Star, Menu, ChevronLeft, Check, Play, Pause } from "lucide-react"
+import { ChevronRight, Clock, Menu, ChevronLeft, Check, Play, Pause, Star } from "lucide-react"
 import { useState, useRef, useEffect } from "react"
 import BookDemoModal from "./components/BookDemoModal"
 import DealFinder from "../components/DealFinder"
+import { useVapi } from "@/hooks/use-vapi"
+import { usePathname, useRouter } from "next/navigation"
 
 export default function Home() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
@@ -27,6 +29,23 @@ export default function Home() {
 
   const [playingCallId, setPlayingCallId] = useState<number | null>(null)
   const audioRef = useRef<HTMLAudioElement | null>(null)
+
+  const [showCallModal, setShowCallModal] = useState(false)
+  const [showFloatingButton, setShowFloatingButton] = useState(false)
+  const [callForm, setCallForm] = useState({ name: "", email: "", phone: "" })
+  const { isCallActive, isLoading, error: vapiError, startCall, endCall } = useVapi()
+
+  const router = useRouter()
+  const pathname = usePathname()
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Show floating button after scrolling 400px
+      setShowFloatingButton(window.scrollY > 400)
+    }
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
 
   const scrollToRealCalls = () => {
     document.getElementById("real-calls-happening-now")?.scrollIntoView({ behavior: "smooth" })
@@ -58,6 +77,37 @@ export default function Home() {
     } else {
       setLiveDemoError("Incorrect code. Please try again.")
     }
+  }
+
+  function handleCallFormChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const { name, value } = e.target
+    setCallForm((prev) => ({ ...prev, [name]: value }))
+  }
+
+  async function handleCallSubmit(e: React.FormEvent) {
+    e.preventDefault()
+
+    const GOOGLE_SCRIPT_URL =
+      "https://script.google.com/macros/s/AKfycbzHRlsghBzHXJPcA_a6ynRXX1hGCUW26kbIdprgvpSlQFjDevpBJDwESbx40JWQSvmF/exec"
+
+    try {
+      await fetch(GOOGLE_SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: callForm.name,
+          email: callForm.email,
+          phone: callForm.phone,
+          type: "call_request",
+        }),
+      })
+    } catch (err) {
+      console.error("Error sending call data to Google Sheet", err)
+    }
+
+    await startCall()
+    setShowCallModal(false)
   }
 
   const calls = [
@@ -278,7 +328,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-[#fafafa]">
-      <BookDemoModal isOpen={demoOpen} onClose={() => setDemoOpen(false)} />
+      <BookDemoModal open={demoOpen} onClose={() => setDemoOpen(false)} />
 
       {/* Header */}
       <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-sm border-gray-100">
@@ -424,7 +474,7 @@ export default function Home() {
               </p>
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                 <Button
-                  onClick={scrollToRealCalls}
+                  onClick={() => setShowCallModal(true)}
                   className="bg-black text-white hover:bg-gray-900 rounded-full px-6 sm:px-8 py-4 sm:py-6 text-sm sm:text-base w-full sm:w-auto flex items-center justify-center gap-2"
                 >
                   <img src="/images/design-mode/oblique-logo-new.png" alt="" className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -1505,6 +1555,7 @@ export default function Home() {
         </div>
       </footer>
 
+      {/* Password Modal */}
       {isLiveDemoModalOpen && (
         <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/40 px-4">
           <div className="w-full max-w-sm rounded-3xl bg-white p-6 shadow-2xl">
@@ -1542,6 +1593,104 @@ export default function Home() {
             </form>
           </div>
         </div>
+      )}
+
+      {showCallModal && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4"
+          onClick={() => setShowCallModal(false)}
+        >
+          <div
+            className="w-full max-w-md rounded-3xl bg-white p-6 shadow-2xl relative"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setShowCallModal(false)}
+              className="absolute right-4 top-4 text-neutral-400 hover:text-neutral-700 text-2xl leading-none"
+              aria-label="Close"
+            >
+              ×
+            </button>
+
+            <p className="text-xs font-semibold text-neutral-500 uppercase tracking-wide">Before you start</p>
+            <h3 className="text-2xl font-semibold text-neutral-900 mt-1">Share a few details</h3>
+            <p className="mt-1 text-sm text-neutral-600">
+              We'll use this so RealFlow can personalize the conversation.
+            </p>
+
+            <form className="mt-5 space-y-4" onSubmit={handleCallSubmit}>
+              <div>
+                <label className="block text-xs font-semibold text-neutral-500 uppercase tracking-wide mb-1">
+                  Name
+                </label>
+                <input
+                  type="text"
+                  name="name"
+                  required
+                  value={callForm.name}
+                  onChange={handleCallFormChange}
+                  className="w-full rounded-lg border border-neutral-300 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-black"
+                  placeholder="Alex Johnson"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-semibold text-neutral-500 uppercase tracking-wide mb-1">
+                  Email
+                </label>
+                <input
+                  type="email"
+                  name="email"
+                  required
+                  value={callForm.email}
+                  onChange={handleCallFormChange}
+                  className="w-full rounded-lg border border-neutral-300 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-black"
+                  placeholder="you@company.com"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-semibold text-neutral-500 uppercase tracking-wide mb-1">
+                  Phone
+                </label>
+                <input
+                  type="tel"
+                  name="phone"
+                  required
+                  value={callForm.phone}
+                  onChange={handleCallFormChange}
+                  className="w-full rounded-lg border border-neutral-300 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-black"
+                  placeholder="+1 (555) 000-0000"
+                />
+              </div>
+
+              <p className="text-xs text-neutral-500">
+                By clicking Start Call, you agree to receive a call from RealFlow AI to discuss your real estate needs.
+              </p>
+
+              <button
+                type="submit"
+                disabled={isLoading}
+                className="w-full rounded-full bg-[#D4A574] px-6 py-3.5 text-sm font-semibold text-white hover:bg-[#C9A227] transition-colors disabled:opacity-50"
+              >
+                {isLoading ? "Connecting..." : "Start Call"}
+              </button>
+
+              {vapiError && <p className="text-xs text-red-600 text-center">{vapiError}</p>}
+            </form>
+          </div>
+        </div>
+      )}
+
+      {showFloatingButton && !showCallModal && (
+        <button
+          onClick={() => setShowCallModal(true)}
+          className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-40 bg-black text-white hover:bg-gray-900 rounded-full px-4 py-3 md:px-5 md:py-3 text-xs md:text-sm font-medium shadow-lg flex items-center gap-2 transition-all hover:scale-105"
+        >
+          <img src="/images/design-mode/oblique-logo-new.png" alt="" className="w-4 h-4" />
+          <span className="hidden sm:inline">Talk to RealFlow</span>
+          <span className="sm:hidden">Talk</span>
+        </button>
       )}
     </div>
   )
