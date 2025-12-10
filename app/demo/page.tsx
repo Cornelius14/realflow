@@ -4,14 +4,7 @@ import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
 
-const STAGES = [
-  "Data Sources",
-  "Ingestion & Enrichment",
-  "Triggers",
-  "Voice AI & Outreach",
-  "Client Delivery",
-  "Analytics",
-]
+const STAGES = ["Data Sources", "Deal Signals", "Voice AI & Outreach", "Client Delivery", "Analytics"]
 
 export default function DemoPage() {
   const [activeStage, setActiveStage] = useState(0)
@@ -116,31 +109,31 @@ export default function DemoPage() {
                     <div className="mt-3 grid grid-cols-2 gap-2 text-xs">
                       <div className="rounded-xl border border-emerald-200 bg-emerald-50/70 px-2 py-2">
                         <p className="font-semibold text-emerald-900">NOAA Weather</p>
-                        <p className="mt-0.5 text-[11px] text-emerald-900/80">Hail, storms, flood risk by block</p>
+                        <p className="mt-0.5 text-[11px] text-emerald-900/80">Hail, storms, and flood risk by block</p>
                       </div>
                       <div className="rounded-xl border border-red-200 bg-red-50/80 px-2 py-2">
                         <p className="font-semibold text-red-900">Tax Liens</p>
-                        <p className="mt-0.5 text-[11px] text-red-900/80">Unpaid state / federal taxes</p>
+                        <p className="mt-0.5 text-[11px] text-red-900/80">Unpaid state or federal taxes</p>
                       </div>
                       <div className="rounded-xl border border-orange-200 bg-orange-50/80 px-2 py-2">
                         <p className="font-semibold text-orange-900">Foreclosures</p>
-                        <p className="mt-0.5 text-[11px] text-orange-900/80">Home or asset at risk of auction</p>
+                        <p className="mt-0.5 text-[11px] text-orange-900/80">Properties at risk of auction</p>
                       </div>
                       <div className="rounded-xl border border-amber-200 bg-amber-50/80 px-2 py-2">
                         <p className="font-semibold text-amber-900">Code Violations</p>
-                        <p className="mt-0.5 text-[11px] text-amber-900/80">Unsafe or neglected property</p>
+                        <p className="mt-0.5 text-[11px] text-amber-900/80">Unsafe or neglected properties</p>
                       </div>
                       <div className="rounded-xl border border-purple-200 bg-purple-50/80 px-2 py-2">
                         <p className="font-semibold text-purple-900">Judgments</p>
-                        <p className="mt-0.5 text-[11px] text-purple-900/80">Court-ordered debts</p>
+                        <p className="mt-0.5 text-[11px] text-purple-900/80">Court-ordered debts against owners</p>
                       </div>
                       <div className="rounded-xl border border-slate-200 bg-slate-50/80 px-2 py-2">
                         <p className="font-semibold text-slate-900">Criminal Records</p>
-                        <p className="mt-0.5 text-[11px] text-slate-900/80">Owner recently arrested</p>
+                        <p className="mt-0.5 text-[11px] text-slate-900/80">Owners recently arrested</p>
                       </div>
                       <div className="rounded-xl border border-sky-200 bg-sky-50/80 px-2 py-2">
                         <p className="font-semibold text-sky-900">Mechanic Liens</p>
-                        <p className="mt-0.5 text-[11px] text-sky-900/80">Unpaid contractor or builder</p>
+                        <p className="mt-0.5 text-[11px] text-sky-900/80">Unpaid contractors or builders</p>
                       </div>
                       <div className="rounded-xl border border-pink-200 bg-pink-50/80 px-2 py-2">
                         <p className="font-semibold text-pink-900">Property Complaints</p>
@@ -152,7 +145,7 @@ export default function DemoPage() {
                       </div>
                       <div className="rounded-xl border border-indigo-200 bg-indigo-50/80 px-2 py-2">
                         <p className="font-semibold text-indigo-900">Permits & Construction</p>
-                        <p className="mt-0.5 text-[11px] text-indigo-900/80">Stalled projects, stop-work</p>
+                        <p className="mt-0.5 text-[11px] text-indigo-900/80">Stalled projects and stop-work orders</p>
                       </div>
                       <div className="col-span-2 rounded-xl border border-neutral-300 bg-white px-2 py-2">
                         <p className="font-semibold text-neutral-900">Custom Client Datasets</p>
@@ -167,8 +160,8 @@ export default function DemoPage() {
                   <div>
                     <h3 className="text-sm font-semibold text-neutral-900">Data Sources — where signals start</h3>
                     <p className="mt-2 text-sm text-neutral-700">
-                      Realflow listens to public, paid, and client-owned data feeds. Each feed becomes a structured
-                      signal the engine can act on — from weather events to tax liens to your own mandate files.
+                      The system connects to public, paid, and client-owned data feeds. Weather, liens, permits, loan
+                      data, and your own mandate files are all turned into structured signals the engine can work with.
                     </p>
                   </div>
                 </div>
@@ -180,20 +173,22 @@ export default function DemoPage() {
                   <div className="space-y-3 rounded-2xl bg-white p-3 border border-neutral-200 shadow-sm text-xs">
                     <div className="flex items-center justify-between">
                       <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-neutral-500">
-                        Ingestion & Enrichment
+                        Deal Signals
                       </span>
                       <span className="rounded-full bg-emerald-50 px-2 py-0.5 text-[10px] font-semibold text-emerald-700">
                         Real time
                       </span>
                     </div>
-                    <p className="mt-1 text-sm font-medium text-neutral-900">Signals flowing through the engine</p>
+                    <p className="mt-1 text-sm font-medium text-neutral-900">
+                      Signals turning into call-ready opportunities
+                    </p>
                     <div className="mt-3 space-y-2">
                       {[
                         "Raw signal captured (event or rule fires)",
-                        "Matched to properties & owners",
-                        "Phones & emails attached",
-                        "Context added (loans, permits, ownership history, portfolio flags)",
-                        "Duplicates and noise removed → deal-ready record",
+                        "Matched to real properties and owners",
+                        "Phones, emails, and key context added (loans, permits, ownership history, portfolio flags)",
+                        "Your rules applied (buy box, mandate, timing, risk)",
+                        "Owners that qualify become call jobs for Voice AI",
                       ].map((step, i) => (
                         <div
                           key={step}
@@ -210,69 +205,17 @@ export default function DemoPage() {
 
                   {/* Text */}
                   <div>
-                    <h3 className="text-sm font-semibold text-neutral-900">
-                      Ingestion & Enrichment — preparing signals for action
-                    </h3>
+                    <h3 className="text-sm font-semibold text-neutral-900">Deal Signals — deciding who gets called</h3>
                     <p className="mt-2 text-sm text-neutral-700">
-                      Realflow ingests signals in real time, ties them to real assets and owners, and enriches each
-                      record with as much context as possible so the voice agent goes into the call already
-                      understanding who the owner is, what happened, and why now — increasing conversion.
+                      Signals are cleaned, enriched, and scored against your rules. For example: an owner in a storm
+                      zone with an aging roof, a landlord with a loan maturing soon, or a property that just picked up a
+                      new lien. Those owners are turned into deal signals and queued as call jobs for Voice AI.
                     </p>
                   </div>
                 </div>
               )}
 
               {activeStage === 2 && (
-                <div className="grid gap-4 sm:grid-cols-2">
-                  {/* Visual */}
-                  <div className="rounded-2xl bg-white p-3 shadow-sm border border-neutral-200 text-xs">
-                    <div className="flex items-center justify-between">
-                      <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-neutral-500">
-                        Client-defined triggers
-                      </span>
-                      <span className="rounded-full bg-amber-50 px-2 py-0.5 text-[10px] font-semibold text-amber-800">
-                        Playbooks
-                      </span>
-                    </div>
-                    <p className="mt-2 text-[11px] text-neutral-600">During onboarding, clients choose rules like:</p>
-                    <div className="mt-3 space-y-2">
-                      <div className="rounded-xl border border-emerald-100 bg-emerald-50/80 px-3 py-2">
-                        <p className="text-[11px] font-semibold text-emerald-900">Hail storm over Broward County</p>
-                        <p className="mt-0.5 text-[11px] text-emerald-900/80">
-                          AND SFR AND equity &gt; 30% AND absentee owner
-                        </p>
-                      </div>
-                      <div className="rounded-xl border border-amber-100 bg-amber-50/80 px-3 py-2">
-                        <p className="text-[11px] font-semibold text-amber-900">Loan maturing in 3–6 months</p>
-                        <p className="mt-0.5 text-[11px] text-amber-900/80">with stress on DSCR</p>
-                      </div>
-                      <div className="rounded-xl border border-red-100 bg-red-50/80 px-3 py-2">
-                        <p className="text-[11px] font-semibold text-red-900">New tax lien / code violation</p>
-                        <p className="mt-0.5 text-[11px] text-red-900/80">on a property inside the buy box</p>
-                      </div>
-                      <div className="rounded-xl border border-purple-100 bg-purple-50/80 px-3 py-2">
-                        <p className="text-[11px] font-semibold text-purple-900">Listing withdrawn</p>
-                        <p className="mt-0.5 text-[11px] text-purple-900/80">Removed in last 90 days</p>
-                      </div>
-                      <div className="rounded-xl border border-neutral-200 bg-neutral-50 px-3 py-2">
-                        <p className="text-[11px] font-semibold text-neutral-900">Portfolio mandate match</p>
-                        <p className="mt-0.5 text-[11px] text-neutral-700">Custom risk rules from client</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Text */}
-                  <div>
-                    <h3 className="text-sm font-semibold text-neutral-900">Triggers — when to reach out</h3>
-                    <p className="mt-2 text-sm text-neutral-700">
-                      Triggers are defined by the client. When a trigger condition is met, Realflow automatically pushes
-                      that owner into the Voice AI & Outreach stage as a call job.
-                    </p>
-                  </div>
-                </div>
-              )}
-
-              {activeStage === 3 && (
                 <div className="grid gap-4 sm:grid-cols-2">
                   {/* Visual */}
                   <div className="rounded-2xl bg-white p-3 shadow-sm border border-neutral-200 text-xs">
@@ -347,11 +290,11 @@ export default function DemoPage() {
                     {/* Bullets */}
                     <div className="mt-4 space-y-2">
                       {[
-                        "Local caller IDs available (e.g. 415 / 646 / 305)",
-                        "Caller built using your preferred voice profile and script",
+                        "Local caller IDs (e.g. 415, 646, 305)",
+                        "Caller built from your preferred voice and script",
                         "Opens with context from the trigger (storm, loan, tax event, etc.)",
                         "Asks 4–6 smart questions on timing, condition, and price",
-                        "If qualified → books a meeting or performs a live warm transfer",
+                        "If qualified → books a meeting or does a warm transfer",
                       ].map((step, i) => (
                         <div key={step} className="flex items-start gap-2">
                           <div className="mt-1 h-1.5 w-1.5 rounded-full bg-[#C9A227]" />
@@ -367,14 +310,15 @@ export default function DemoPage() {
                       Voice AI & Outreach — conversations at scale
                     </h3>
                     <p className="mt-2 text-sm text-neutral-700">
-                      Realflow spins up callers that match the client's spec and automatically dials owners whenever a
-                      trigger fires, so the team only handles conversations with owners who already engaged.
+                      Once a deal signal is created, the system uses the voices and scripts you chose to call those
+                      owners, qualify them, and either book a follow-up or hand the conversation to your team. You only
+                      step in once there's clear intent.
                     </p>
                   </div>
                 </div>
               )}
 
-              {activeStage === 4 && (
+              {activeStage === 3 && (
                 <div className="grid gap-4 sm:grid-cols-2">
                   {/* Visual */}
                   <div className="rounded-2xl bg-white p-3 shadow-sm border border-neutral-200 text-xs">
@@ -382,11 +326,8 @@ export default function DemoPage() {
                       <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-neutral-500">
                         Client delivery
                       </span>
-                      <span className="rounded-full bg-emerald-50 px-2 py-0.5 text-[10px] font-semibold text-emerald-700">
-                        Choose your mode
-                      </span>
                     </div>
-                    <p className="mt-2 text-[11px] text-neutral-600">The client chooses the delivery mode:</p>
+                    <p className="mt-2 text-sm font-medium text-neutral-900">Choose your mode</p>
                     <div className="mt-3 grid gap-2">
                       <div className="flex items-center gap-3 rounded-xl border border-emerald-200 bg-emerald-50/80 px-3 py-2">
                         <div className="flex h-6 w-6 items-center justify-center rounded-full bg-emerald-500 text-white text-[10px] font-semibold">
@@ -414,16 +355,17 @@ export default function DemoPage() {
                   {/* Text */}
                   <div>
                     <h3 className="text-sm font-semibold text-neutral-900">
-                      Client Delivery — how you receive qualified conversations
+                      Client Delivery — how qualified conversations arrive
                     </h3>
                     <p className="mt-2 text-sm text-neutral-700">
-                      The team only spends time on owners who have already had a full conversation.
+                      You choose how qualified conversations show up—live transfers, booked meetings, or detailed CRM
+                      summaries—so your team only spends time with owners who've already engaged.
                     </p>
                   </div>
                 </div>
               )}
 
-              {activeStage === 5 && (
+              {activeStage === 4 && (
                 <div className="grid gap-4 sm:grid-cols-2">
                   {/* Visual */}
                   <div className="rounded-2xl bg-white p-3 shadow-sm border border-neutral-200 text-xs">
@@ -457,8 +399,8 @@ export default function DemoPage() {
                       <p className="text-[11px] font-semibold text-neutral-900">Top performing</p>
                       <ul className="mt-1 list-disc space-y-0.5 pl-4 text-[11px] text-neutral-700">
                         <li>Script A + Vanessa → 9 high-intent sellers</li>
-                        <li>Storm-context opener outperforming generic by 32%</li>
-                        <li>Best connect rate: 5–7pm</li>
+                        <li>Storm-context opener beats generic opener by 32%</li>
+                        <li>Best connect rate: weekdays 5–7pm</li>
                       </ul>
                     </div>
                   </div>
@@ -467,8 +409,9 @@ export default function DemoPage() {
                   <div>
                     <h3 className="text-sm font-semibold text-neutral-900">Analytics — continuous optimization</h3>
                     <p className="mt-2 text-sm text-neutral-700">
-                      Analytics analyzes transcripts and compares scripts/voices, surfaces which triggers and markets
-                      perform best, and feeds those learnings back into future campaigns.
+                      Analytics compares transcripts, scripts, and voices and shows which triggers and markets perform
+                      best. Those insights feed back into the engine so each campaign gets a little smarter than the
+                      last.
                     </p>
                   </div>
                 </div>
