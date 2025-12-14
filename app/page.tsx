@@ -799,8 +799,86 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Real Calls Section */}
+      <section
+        id="real-calls-happening-now"
+        className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-[#F7F7F7] border-t border-[#E5E5E5]"
+      >
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12 sm:mb-16 mt-6">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif text-black mb-4 sm:mb-6 leading-tight text-balance">
+              Real Calls Happening Now
+            </h2>
+            <p className="text-base sm:text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed break-words">
+              See how RealFlow AI is connecting with property owners and qualifying deals in real-time.
+            </p>
+          </div>
+
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {calls.map((call) => (
+              <button
+                key={call.id}
+                onClick={() => handlePlayAudio(call.id, call.audioUrl)}
+                className={`rounded-2xl bg-white p-4 shadow-sm border overflow-hidden min-w-0 text-left transition-all hover:shadow-md ${
+                  playingCallId === call.id ? "border-black ring-2 ring-black/20" : "border-neutral-100"
+                }`}
+              >
+                {/* Top row */}
+                <div className="flex items-center justify-between mb-4 gap-2 flex-wrap min-w-0">
+                  <div className="flex items-center gap-2 flex-shrink-0">
+                    <span
+                      className={`px-3 py-1 rounded-full text-xs font-medium ${
+                        call.type === "Inbound" ? "bg-blue-50 text-blue-700" : "bg-purple-50 text-purple-700"
+                      }`}
+                    >
+                      {call.type}
+                    </span>
+                    {playingCallId === call.id ? (
+                      <Pause className="w-4 h-4 text-black" />
+                    ) : (
+                      <Play className="w-4 h-4 text-gray-400" />
+                    )}
+                  </div>
+                  <span className="text-xs text-gray-400 break-words min-w-0">{call.timeAgo}</span>
+                </div>
+
+                {/* Middle */}
+                <div className="mb-4 min-w-0">
+                  <p className="text-xs text-gray-500 mb-1 break-words overflow-wrap-anywhere">
+                    someone in {call.city}, {call.region}
+                  </p>
+                  <p className="text-lg font-serif text-black font-bold mb-2 break-words overflow-wrap-anywhere">
+                    {call.role} call
+                  </p>
+                  <p className="text-sm text-gray-700 leading-relaxed break-words overflow-wrap-anywhere">
+                    {call.context}
+                  </p>
+                </div>
+
+                {/* Bottom row */}
+                <div className="flex items-center justify-between pt-4 border-t border-gray-100 gap-2 flex-wrap min-w-0">
+                  <div className="flex items-center gap-2 flex-wrap min-w-0">
+                    <span className="px-3 py-1 bg-green-50 text-green-700 text-xs rounded-full font-medium flex-shrink-0">
+                      {call.status}
+                    </span>
+                    <div className="flex items-center gap-1 flex-shrink-0">
+                      <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                      <span className="text-sm text-gray-700">{call.rating}</span>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-1 text-gray-500 flex-shrink-0">
+                    <Clock className="w-4 h-4" />
+                    <span className="text-sm">{call.duration}</span>
+                  </div>
+                </div>
+              </button>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Who We Help Section */}
-      <section id="workflows" className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-[#F7F7F7] border-t border-[#E5E5E5]">
+      <section id="workflows" className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-white border-t border-[#E5E5E5]">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12 sm:mb-16 mt-6">
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif text-black mb-4 sm:mb-6 leading-tight text-balance px-4">
@@ -976,7 +1054,7 @@ export default function Home() {
       </section>
 
       {/* Case Studies Section */}
-      <section id="case-studies" className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-white border-t border-[#E5E5E5]">
+      <section id="case-studies" className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-[#F7F7F7] border-t border-[#E5E5E5]">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12 sm:mb-16 mt-6">
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif text-black mb-4 sm:mb-6 leading-tight text-balance">
@@ -1103,84 +1181,6 @@ export default function Home() {
             </div>
           </div>
           */}
-        </div>
-      </section>
-
-      {/* Real Calls Section */}
-      <section
-        id="real-calls-happening-now"
-        className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-[#F7F7F7] border-t border-[#E5E5E5]"
-      >
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12 sm:mb-16 mt-6">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif text-black mb-4 sm:mb-6 leading-tight text-balance">
-              Real Calls Happening Now
-            </h2>
-            <p className="text-base sm:text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed break-words">
-              See how RealFlow AI is connecting with property owners and qualifying deals in real-time.
-            </p>
-          </div>
-
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {calls.map((call) => (
-              <button
-                key={call.id}
-                onClick={() => handlePlayAudio(call.id, call.audioUrl)}
-                className={`rounded-2xl bg-white p-4 shadow-sm border overflow-hidden min-w-0 text-left transition-all hover:shadow-md ${
-                  playingCallId === call.id ? "border-black ring-2 ring-black/20" : "border-neutral-100"
-                }`}
-              >
-                {/* Top row */}
-                <div className="flex items-center justify-between mb-4 gap-2 flex-wrap min-w-0">
-                  <div className="flex items-center gap-2 flex-shrink-0">
-                    <span
-                      className={`px-3 py-1 rounded-full text-xs font-medium ${
-                        call.type === "Inbound" ? "bg-blue-50 text-blue-700" : "bg-purple-50 text-purple-700"
-                      }`}
-                    >
-                      {call.type}
-                    </span>
-                    {playingCallId === call.id ? (
-                      <Pause className="w-4 h-4 text-black" />
-                    ) : (
-                      <Play className="w-4 h-4 text-gray-400" />
-                    )}
-                  </div>
-                  <span className="text-xs text-gray-400 break-words min-w-0">{call.timeAgo}</span>
-                </div>
-
-                {/* Middle */}
-                <div className="mb-4 min-w-0">
-                  <p className="text-xs text-gray-500 mb-1 break-words overflow-wrap-anywhere">
-                    someone in {call.city}, {call.region}
-                  </p>
-                  <p className="text-lg font-serif text-black font-bold mb-2 break-words overflow-wrap-anywhere">
-                    {call.role} call
-                  </p>
-                  <p className="text-sm text-gray-700 leading-relaxed break-words overflow-wrap-anywhere">
-                    {call.context}
-                  </p>
-                </div>
-
-                {/* Bottom row */}
-                <div className="flex items-center justify-between pt-4 border-t border-gray-100 gap-2 flex-wrap min-w-0">
-                  <div className="flex items-center gap-2 flex-wrap min-w-0">
-                    <span className="px-3 py-1 bg-green-50 text-green-700 text-xs rounded-full font-medium flex-shrink-0">
-                      {call.status}
-                    </span>
-                    <div className="flex items-center gap-1 flex-shrink-0">
-                      <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                      <span className="text-sm text-gray-700">{call.rating}</span>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-1 text-gray-500 flex-shrink-0">
-                    <Clock className="w-4 h-4" />
-                    <span className="text-sm">{call.duration}</span>
-                  </div>
-                </div>
-              </button>
-            ))}
-          </div>
         </div>
       </section>
 
