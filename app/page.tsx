@@ -3,7 +3,7 @@
 import type React from "react"
 
 import { Button } from "@/components/ui/button"
-import { ChevronRight, Clock, Menu, ChevronLeft, Check, Play, Pause, Star } from "lucide-react"
+import { ChevronRight, Clock, Menu, ChevronLeft, Check, Play, Pause, Star, LogIn } from "lucide-react"
 import { useState, useRef, useEffect } from "react"
 import BookDemoModal from "./components/BookDemoModal"
 import DealFinder from "../components/DealFinder"
@@ -125,7 +125,7 @@ export default function Home() {
       audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/019a8dbd-b3ae-755f-8b33-0c9f5970128b-1763314784584-934f606d-0d10-4d50-8d5e-67f18ac85a2f-stereo-9lBDy10XxL1jTL9e9h2NbnsiJxWX6a.wav",
     },
     {
-      id: 3,
+      id: 2,
       type: "Outbound",
       city: "Miami-Dade County",
       region: "FL",
@@ -133,9 +133,22 @@ export default function Home() {
       context: "called a small multifamily owner about testing price for a potential sale.",
       rating: "5 / 5",
       status: "Qualified",
-      timeAgo: "24 minutes ago",
+      timeAgo: "15 minutes ago",
       duration: "3m 47s",
       audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/019a84a6-32d0-700f-b32a-1a73573451ad-1763162313794-8c849572-c237-479a-8939-9285d9a89a07-stereo-uQVSiyYp98sYT4dHyxbAb1xGBoL21M.wav",
+    },
+    {
+      id: 3,
+      type: "Inbound",
+      city: "Austin",
+      region: "TX",
+      role: "Investor",
+      context: "called about purchasing a commercial property portfolio in downtown area.",
+      rating: "5 / 5",
+      status: "Qualified",
+      timeAgo: "24 minutes ago",
+      duration: "5m 23s",
+      audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/019a8dbd-b3ae-755f-8b33-0c9f5970128b-1763314784584-934f606d-0d10-4d50-8d5e-67f18ac85a2f-stereo-9lBDy10XxL1jTL9e9h2NbnsiJxWX6a.wav",
     },
   ]
 
@@ -367,7 +380,7 @@ export default function Home() {
             <button
               type="button"
               onClick={handleLiveDemoClick}
-              className="flex items-center gap-1.5 text-sm md:text-base font-medium bg-[#C9A227] text-white px-4 py-1.5 rounded-full hover:bg-[#B8911F] transition-colors"
+              className="flex items-center gap-1.5 text-sm md:text-base font-medium bg-black text-white px-4 py-1.5 rounded-full hover:bg-gray-800 transition-colors"
             >
               <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path
@@ -382,7 +395,12 @@ export default function Home() {
           </nav>
 
           <div className="flex items-center gap-2 sm:gap-4">
-            <Button variant="ghost" className="hidden sm:flex text-sm text-gray-700 hover:text-black px-3">
+            <Button
+              variant="ghost"
+              className="hidden sm:flex items-center gap-2 text-sm text-gray-700 hover:text-black px-3"
+              onClick={() => window.location.href = 'https://app.realflow.co/signup/'}
+            >
+              <LogIn className="w-4 h-4" />
               User Login
             </Button>
             <button
@@ -467,7 +485,7 @@ export default function Home() {
 
             <div className="max-w-full sm:max-w-md lg:max-w-lg relative z-10 flex flex-col items-center md:items-start text-center md:text-left md:ml-8">
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif text-black mb-3 leading-tight text-balance md:text-left text-center sm:mb-4 ml-1">
-                AI Engine for Real Estate Deals
+                Voice AI Broker for Real Estate Deals
               </h1>
               <p className="text-base sm:text-lg text-gray-700 mb-5 sm:mb-5 md:mb-8 leading-relaxed">
                 Source, qualify and book high intent meetings
@@ -834,9 +852,13 @@ export default function Home() {
                       {call.type}
                     </span>
                     {playingCallId === call.id ? (
-                      <Pause className="w-4 h-4 text-black" />
+                      <div className="flex items-center justify-center w-8 h-8 rounded-full bg-red-500 hover:bg-red-600 transition-colors">
+                        <Pause className="w-4 h-4 text-white" />
+                      </div>
                     ) : (
-                      <Play className="w-4 h-4 text-gray-400" />
+                      <div className="flex items-center justify-center w-8 h-8 rounded-full bg-green-500 hover:bg-green-600 transition-colors shadow-md hover:shadow-lg">
+                        <Play className="w-4 h-4 text-white ml-0.5" />
+                      </div>
                     )}
                   </div>
                   <span className="text-xs text-gray-400 break-words min-w-0">{call.timeAgo}</span>
@@ -1249,19 +1271,7 @@ export default function Home() {
                 strokeLinecap="round"
                 strokeLinejoin="round"
               >
-                {/* Wrench jaws at top */}
-                <path d="M14 8 L14 14 L18 14" />
-                <path d="M22 8 L22 14 L18 14" />
-
-                {/* Handle */}
-                <path d="M18 14 L32 38" />
-
-                {/* Adjustment screw lines */}
-                <line x1="15" y1="11" x2="16.5" y2="11" />
-                <line x1="15" y1="13" x2="16.5" y2="13" />
-
-                {/* Handle grip at bottom */}
-                <circle cx="32" cy="38" r="3" />
+                <path d="M29.4 12.6a2 2 0 0 0 0 2.8l3.2 3.2a2 2 0 0 0 2.8 0l7.54-7.54a12 12 0 0 1-15.88 15.88l-13.82 13.82a4.24 4.24 0 0 1-6-6l13.82-13.82a12 12 0 0 1 15.88-15.88l-7.52 7.52z" />
               </svg>
               <h3 className="text-lg sm:text-xl font-serif text-black mb-2 sm:mb-3">1 Tool, Lower Stack Cost</h3>
               <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
@@ -1467,8 +1477,8 @@ export default function Home() {
       {/* Footer */}
       <footer className="bg-[#F3F4F6] border-t border-gray-200 py-4 md:py-6 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 mb-4 md:mb-6">
-            <div className="col-span-2 md:col-span-1">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-4 md:mb-6">
+            <div>
               <div className="flex items-center gap-2 mb-2 md:mb-3">
                 <img
                   src="/images/design-mode/oblique-logo-new.png"
@@ -1494,50 +1504,23 @@ export default function Home() {
               </h4>
               <ul className="space-y-1 md:space-y-2">
                 <li>
-                  <a href="#" className="text-xs sm:text-sm text-gray-600 hover:text-black">
+                  <a href="#how-it-works" className="text-xs sm:text-sm text-gray-600 hover:text-black">
                     Features
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-xs sm:text-sm text-gray-600 hover:text-black">
+                  <a href="#case-studies" className="text-xs sm:text-sm text-gray-600 hover:text-black">
                     Case Studies
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-xs sm:text-sm text-gray-600 hover:text-black">
+                  <a href="#pricing" className="text-xs sm:text-sm text-gray-600 hover:text-black">
                     Pricing
                   </a>
                 </li>
               </ul>
             </div>
 
-            {/* CHANGE: Removed Careers and Blog from Company section */}
-            <div>
-              <h4 className="text-xs sm:text-sm font-semibold text-black mb-2 md:mb-3 uppercase tracking-wider">
-                Company
-              </h4>
-              <ul className="space-y-1 md:space-y-2">
-                <li>
-                  <a href="#" className="text-xs sm:text-sm text-gray-600 hover:text-black">
-                    About Us
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            {/* CHANGE: Removed Contact and Privacy from Resources section */}
-            <div>
-              <h4 className="text-xs sm:text-sm font-semibold text-black mb-2 md:mb-3 uppercase tracking-wider">
-                Resources
-              </h4>
-              <ul className="space-y-1 md:space-y-2">
-                <li>
-                  <a href="#" className="text-xs sm:text-sm text-gray-600 hover:text-black">
-                    Support
-                  </a>
-                </li>
-              </ul>
-            </div>
           </div>
 
           <div className="pt-3 md:pt-4 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center gap-3">
