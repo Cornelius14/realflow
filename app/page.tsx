@@ -147,7 +147,7 @@ export default function Home() {
       rating: "5 / 5",
       status: "Qualified",
       timeAgo: "24 minutes ago",
-      duration: "5m 23s",
+      duration: "3m 21s",
       audioUrl: "/audio/call3.wav",
     },
   ]
