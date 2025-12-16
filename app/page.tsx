@@ -114,10 +114,10 @@ export default function Home() {
     {
       id: 1,
       type: "Inbound",
-      city: "Charlotte",
-      region: "NC",
+      city: "Chicago",
+      region: "IL",
       role: "Borrower",
-      context: "just called a regional mortgage lender about refinancing a small multifamily portfolio.",
+      context: "caller seeking an investment property loan for a $1M Chicago-based purchase and after qualification agrees to a follow-up call.",
       rating: "5 / 5",
       status: "Qualified",
       timeAgo: "8 minutes ago",
@@ -129,8 +129,8 @@ export default function Home() {
       type: "Outbound",
       city: "Miami-Dade County",
       region: "FL",
-      role: "Wholesaler",
-      context: "called a small multifamily owner about testing price for a potential sale.",
+      role: "Outreach",
+      context: "agent cold calls owner regarding a property, identifies selling intent, incorporates all information and is able to set up a future call for sale.",
       rating: "5 / 5",
       status: "Qualified",
       timeAgo: "15 minutes ago",
@@ -140,10 +140,10 @@ export default function Home() {
     {
       id: 3,
       type: "Inbound",
-      city: "Austin",
-      region: "TX",
-      role: "Investor",
-      context: "called about purchasing a commercial property portfolio in downtown area.",
+      city: "Tampa",
+      region: "FL",
+      role: "Borrower",
+      context: "caller seeking pre-approval for a primary home in Tampa, relocating from NYC, and books a follow-up with a loan officer.",
       rating: "5 / 5",
       status: "Qualified",
       timeAgo: "24 minutes ago",
@@ -852,7 +852,7 @@ export default function Home() {
                       {call.type}
                     </span>
                     {playingCallId === call.id ? (
-                      <div className="flex items-center justify-center w-8 h-8 rounded-full bg-red-500 hover:bg-red-600 transition-colors">
+                      <div className="flex items-center justify-center w-8 h-8 rounded-full bg-black hover:bg-gray-800 transition-colors">
                         <Pause className="w-4 h-4 text-white" />
                       </div>
                     ) : (
