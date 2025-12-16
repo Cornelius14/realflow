@@ -148,7 +148,7 @@ export default function Home() {
       status: "Qualified",
       timeAgo: "24 minutes ago",
       duration: "5m 23s",
-      audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/019a8dbd-b3ae-755f-8b33-0c9f5970128b-1763314784584-934f606d-0d10-4d50-8d5e-67f18ac85a2f-stereo-9lBDy10XxL1jTL9e9h2NbnsiJxWX6a.wav",
+      audioUrl: "/audio/call3.wav",
     },
   ]
 
