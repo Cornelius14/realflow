@@ -444,15 +444,6 @@ export default function Home() {
               <a href="#pricing" className="hover:text-gray-900 text-gray-700" onClick={handleCloseDemo}>
                 Pricing
               </a>
-              <Button
-                onClick={() => {
-                  setDemoOpen(true)
-                  setIsMobileMenuOpen(false)
-                }}
-                className="bg-black text-white hover:bg-gray-900 rounded-full px-6 py-3 text-base w-full"
-              >
-                Book a Demo
-              </Button>
               <button
                 type="button"
                 onClick={() => window.location.href = 'https://app.realflow.co/signup/'}
