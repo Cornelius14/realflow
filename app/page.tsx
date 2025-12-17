@@ -444,24 +444,6 @@ export default function Home() {
               <a href="#pricing" className="hover:text-gray-900 text-gray-700" onClick={handleCloseDemo}>
                 Pricing
               </a>
-              <button
-                type="button"
-                onClick={() => {
-                  setIsMobileMenuOpen(false)
-                  handleLiveDemoClick()
-                }}
-                className="flex items-center gap-1.5 font-medium bg-[#C9A227] text-white px-4 py-2 rounded-full hover:bg-[#B8911F] transition-colors justify-center mt-2"
-              >
-                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
-                  />
-                </svg>
-                Live Demo
-              </button>
               <a
                 href="#real-calls-happening-now"
                 className="hover:text-gray-900 text-gray-700"
@@ -469,12 +451,33 @@ export default function Home() {
               >
                 Real Calls
               </a>
-              <Button
-                onClick={() => setDemoOpen(true)}
-                className="bg-black text-white hover:bg-gray-900 rounded-full px-6 py-3 text-sm mt-2 w-full"
+              <button
+                type="button"
+                onClick={() => window.location.href = 'https://app.realflow.co/signup/'}
+                className="hover:text-gray-900 text-gray-700 text-left"
+              >
+                User Login
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setIsMobileMenuOpen(false)
+                  handleLiveDemoClick()
+                }}
+                className="hover:text-gray-900 text-gray-700 text-left"
+              >
+                Live Demo
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setDemoOpen(true)
+                  setIsMobileMenuOpen(false)
+                }}
+                className="hover:text-gray-900 text-gray-700 text-left"
               >
                 Book a Demo
-              </Button>
+              </button>
             </nav>
           </div>
         )}
