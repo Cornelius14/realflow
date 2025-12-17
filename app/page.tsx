@@ -428,22 +428,39 @@ export default function Home() {
 
         {isMobileMenuOpen && (
           <div className="border-t border-gray-200 bg-white px-4 py-4 lg:hidden">
-            <nav className="flex flex-col gap-3 text-sm">
-              <Button
-                onClick={() => window.location.href = 'https://app.realflow.co/signup/'}
-                className="bg-black text-white hover:bg-gray-900 rounded-full px-6 py-3 text-sm w-full"
-              >
-                User Login
-              </Button>
+            <nav className="flex flex-col gap-4 text-base">
+              <a href="#product" className="hover:text-gray-900 text-gray-700" onClick={handleCloseDemo}>
+                Product
+              </a>
+              <a href="#how-it-works" className="hover:text-gray-900 text-gray-700" onClick={handleCloseDemo}>
+                How it Works
+              </a>
+              <a href="#workflows" className="hover:text-gray-900 text-gray-700" onClick={handleCloseDemo}>
+                Workflows
+              </a>
+              <a href="#case-studies" className="hover:text-gray-900 text-gray-700" onClick={handleCloseDemo}>
+                Case Studies
+              </a>
+              <a href="#pricing" className="hover:text-gray-900 text-gray-700" onClick={handleCloseDemo}>
+                Pricing
+              </a>
               <Button
                 onClick={() => {
                   setDemoOpen(true)
                   setIsMobileMenuOpen(false)
                 }}
-                className="bg-black text-white hover:bg-gray-900 rounded-full px-6 py-3 text-sm w-full"
+                className="bg-black text-white hover:bg-gray-900 rounded-full px-6 py-3 text-base w-full"
               >
                 Book a Demo
               </Button>
+              <button
+                type="button"
+                onClick={() => window.location.href = 'https://app.realflow.co/signup/'}
+                className="hover:text-gray-900 text-gray-700 text-left flex items-center gap-2"
+              >
+                <LogIn className="w-5 h-5" />
+                User Login
+              </button>
             </nav>
           </div>
         )}
