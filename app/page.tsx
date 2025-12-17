@@ -3,7 +3,7 @@
 import type React from "react"
 
 import { Button } from "@/components/ui/button"
-import { ChevronRight, Clock, Menu, ChevronLeft, Check, Play, Pause, Star, LogIn } from "lucide-react"
+import { ChevronRight, Clock, Menu, ChevronLeft, Check, Play, Pause, Star, LogIn, Phone, PhoneOff, Mic, MicOff } from "lucide-react"
 import { useState, useRef, useEffect } from "react"
 import BookDemoModal from "./components/BookDemoModal"
 import DealFinder from "../components/DealFinder"
@@ -33,7 +33,18 @@ export default function Home() {
   const [showCallModal, setShowCallModal] = useState(false)
   const [showFloatingButton, setShowFloatingButton] = useState(false)
   const [callForm, setCallForm] = useState({ name: "", email: "", phone: "" })
-  const { isCallActive, isLoading, error: vapiError, startCall, endCall } = useVapi()
+  const {
+    isCallActive,
+    isLoading,
+    isSpeaking,
+    volumeLevel,
+    transcript,
+    isMuted,
+    error: vapiError,
+    startCall,
+    endCall,
+    toggleMute
+  } = useVapi()
 
   const router = useRouter()
   const pathname = usePathname()
@@ -1665,7 +1676,7 @@ export default function Home() {
         </div>
       )}
 
-      {showFloatingButton && !showCallModal && (
+      {showFloatingButton && !showCallModal && !isCallActive && (
         <button
           onClick={() => setShowCallModal(true)}
           className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-40 bg-black text-white hover:bg-gray-900 rounded-full px-4 py-3 md:px-5 md:py-3 text-xs md:text-sm font-medium shadow-lg flex items-center gap-2 transition-all hover:scale-105"
@@ -1674,6 +1685,82 @@ export default function Home() {
           <span className="hidden sm:inline">Talk to RealFlow</span>
           <span className="sm:hidden">Talk</span>
         </button>
+      )}
+
+      {/* Custom Vapi Call UI - Only visible when call is active */}
+      {isCallActive && (
+        <div className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-50 bg-white rounded-2xl shadow-2xl border-2 border-black p-6 w-80 animate-in slide-in-from-bottom-5">
+          <div className="flex flex-col items-center gap-4">
+            {/* Header */}
+            <div className="flex items-center gap-2 w-full justify-between">
+              <div className="flex items-center gap-2">
+                <img src="/images/design-mode/oblique-logo-new.png" alt="" className="w-5 h-5" />
+                <span className="text-sm font-semibold text-black">RealFlow AI</span>
+              </div>
+              <div className="flex items-center gap-1">
+                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+                <span className="text-xs text-green-700 font-medium">Live</span>
+              </div>
+            </div>
+
+            {/* Visual indicator */}
+            <div className="relative w-24 h-24 flex items-center justify-center">
+              {/* Animated rings */}
+              <div className={`absolute inset-0 rounded-full border-4 border-green-500 ${isSpeaking ? 'animate-ping' : ''}`} />
+              <div className={`absolute inset-2 rounded-full border-4 border-green-300 ${isSpeaking ? 'animate-pulse' : ''}`} />
+
+              {/* Center icon - Green */}
+              <div className="relative z-10 w-16 h-16 bg-green-500 rounded-full flex items-center justify-center">
+                <Phone className="w-8 h-8 text-white" />
+              </div>
+
+              {/* Volume indicator */}
+              {volumeLevel > 0 && (
+                <div
+                  className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 bg-green-500 rounded-full transition-all duration-100"
+                  style={{ height: `${Math.min(volumeLevel * 100, 40)}px` }}
+                />
+              )}
+            </div>
+
+            {/* Status text */}
+            <div className="text-center">
+              <p className="text-sm font-medium text-black">
+                {isSpeaking ? "AI is speaking..." : "Listening..."}
+              </p>
+            </div>
+
+            {/* Controls */}
+            <div className="flex gap-3 w-full justify-center">
+              <button
+                onClick={toggleMute}
+                className={`p-3 rounded-full transition-all ${
+                  isMuted
+                    ? 'bg-red-500 hover:bg-red-600 text-white'
+                    : 'bg-gray-100 hover:bg-gray-200 text-black'
+                }`}
+                aria-label={isMuted ? "Unmute" : "Mute"}
+              >
+                {isMuted ? <MicOff className="w-5 h-5" /> : <Mic className="w-5 h-5" />}
+              </button>
+
+              <button
+                onClick={endCall}
+                className="p-3 rounded-full bg-red-500 hover:bg-red-600 text-white transition-all"
+                aria-label="End call"
+              >
+                <PhoneOff className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* Error display */}
+            {vapiError && (
+              <div className="w-full p-2 bg-red-50 border border-red-200 rounded-lg">
+                <p className="text-xs text-red-700 text-center">{vapiError}</p>
+              </div>
+            )}
+          </div>
+        </div>
       )}
     </div>
   )
