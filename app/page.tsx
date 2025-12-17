@@ -459,9 +459,9 @@ export default function Home() {
 
       {/* Hero Section */}
       <section className="pt-2 sm:pt-8 pb-2 sm:pb-6 md:pb-8 px-4 sm:px-6 lg:px-8 border md:pt-12">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-7xl lg:max-w-[85rem] mx-auto">
           <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-10 lg:pr-12 lg:py-10 relative overflow-hidden min-h-[550px] sm:min-h-[500px] md:min-h-[380px] border border-gray-200 lg:pt-10 lg:pl-0">
-            <div className="pointer-events-none absolute inset-y-0 right-0 w-full md:w-[65%] overflow-hidden flex items-center">
+            <div className="pointer-events-none absolute inset-y-0 right-0 w-full md:w-[60%] overflow-hidden flex items-center">
               <img
                 src="/images/design-mode/sadfa(1).jpeg"
                 alt=""
