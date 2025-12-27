@@ -296,7 +296,7 @@ export default function Home() {
       category: "STR Property Management",
       icon: "🏡",
       headline: "0 → 70 properties in 2 months",
-      body: "Identified luxury homeowners in legal STR markets and scaled from zero to seventy units.",
+      body: "Voice AI detected homeowners in legal STR markets showing selling signals, qualified intent across 200+ conversations, and booked meetings that converted to seventy managed units.",
       company: "The Solaire Collection",
       name: "Max Zheng",
     },
@@ -311,24 +311,24 @@ export default function Home() {
     {
       category: "Industrial Acquisition",
       icon: "🏭",
-      headline: "612 warehouses → 6 at target price",
-      body: "Found Nashville warehouses, contacted 487, connected with 121, and secured six at target price.",
+      headline: "612 off-market warehouses → 6 closed deals",
+      body: "AI identified Nashville warehouse owners with transaction signals, Voice AI qualified 121 through multi-channel outreach, and secured six acquisitions at target price—all off-market.",
       company: "Southeast Industrial",
       name: "Industrial Acquisition Team",
     },
     {
       category: "Mortgage Lender",
       icon: "🏦",
-      headline: "Missed leads → 3x more funded loans in 60 days",
-      body: "Replaced missed inbound calls and web form leads with a 24/7 AI agent that responds immediately, qualifies borrowers, and books them directly to loan officers' calendars.",
+      headline: "24/7 Voice AI → 3x more funded loans",
+      body: "Voice AI replaced missed inbound opportunities by instantly answering calls and web leads, qualifying borrowers in real-time, and booking them directly to loan officers' calendars—tripling funded volume in 60 days.",
       company: "National Mortgage Bank",
       name: "Head of Sales",
     },
     {
-      category: "Lending",
+      category: "Commercial Lending",
       icon: "🏦",
-      headline: "612 lender calls in 10 days; quotes in 36 hours",
-      body: "Targeted owners with near-term maturities and achieved average quote turnaround of thirty-six hours.",
+      headline: "Owner signals → 612 calls → quotes in 36 hours",
+      body: "AI detected owners with near-term loan maturities, Voice AI reached 612 decision-makers in 10 days, and qualified interest delivered quote-ready opportunities with 36-hour average turnaround.",
       company: "Lending Specialty",
       name: "Bar Shechter",
     },
@@ -473,10 +473,10 @@ export default function Home() {
 
             <div className="max-w-full sm:max-w-md lg:max-w-lg relative z-10 flex flex-col items-center md:items-start text-center md:text-left md:ml-8">
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif text-black mb-3 leading-tight text-balance md:text-left text-center sm:mb-4 ml-1">
-                Voice AI Broker for Real Estate Deals
+                AI engine for off-market real estate deals.
               </h1>
               <p className="text-base sm:text-lg text-gray-700 mb-5 sm:mb-5 md:mb-8 leading-relaxed">
-                Source, qualify and book high intent meetings
+                Orchestrates your workflow, automatically sourcing, qualifying, and closing deals
               </p>
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                 <Button
@@ -516,11 +516,10 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12 sm:mb-16 mt-6">
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif text-black mb-4 sm:mb-6 leading-tight text-balance px-4">
-              How it Works
+              How It Works
             </h2>
             <p className="text-sm md:text-base lg:text-lg text-gray-700 max-w-3xl mx-auto leading-snug md:leading-relaxed px-4 break-words">
-              Make AI work for you by automating repetitive tasks that your real estate business encounters every single
-              day.
+              See how RealFlow goes from owner signals to qualified, booked deals in four steps.
             </p>
           </div>
 
@@ -543,10 +542,10 @@ export default function Home() {
                       activeStep === 1 ? "font-bold" : ""
                     }`}
                   >
-                    Tell Us What You're Looking For
+                    Describe What You're Looking For
                   </h4>
                   <p className="text-xs md:text-sm text-gray-600 leading-snug break-words overflow-wrap-anywhere max-w-none">
-                    Describe the exact leads you want using natural language: market, price, property type, timing.
+                    Describe the exact deals you want in plain language: market, asset type, size, timing, and who on your team should receive the opportunity.
                   </p>
                 </button>
 
@@ -562,11 +561,10 @@ export default function Home() {
                       activeStep === 2 ? "font-bold" : ""
                     }`}
                   >
-                    AI Sources Prospects and Captures Inbound Interest
+                    RealFlow Detects Owners Most Likely to Transact
                   </h4>
                   <p className="text-xs md:text-sm text-gray-600 leading-snug break-words overflow-wrap-anywhere max-w-none">
-                    System pulls thousands of matching properties from multiple sources and captures inbound calls,
-                    texts, and forms.
+                    Using AI, RealFlow scans property data and external triggers to highlight owners with the highest likelihood to sell or refinance.
                   </p>
                 </button>
 
@@ -582,11 +580,10 @@ export default function Home() {
                       activeStep === 3 ? "font-bold" : ""
                     }`}
                   >
-                    Multi-Channel Outreach
+                    Voice AI Runs Multi-Channel Outreach
                   </h4>
                   <p className="text-xs md:text-sm text-gray-600 leading-snug break-words overflow-wrap-anywhere max-w-none">
-                    AI calls, texts, emails, drops voicemail, and qualifies each owner across channels based on your
-                    criteria.
+                    RealFlow's Voice AI works your list for you—calls, SMS, email, and voicemail—while collecting answers, objections, and intent in one place.
                   </p>
                 </button>
 
@@ -605,8 +602,7 @@ export default function Home() {
                     Qualified Meetings Booked
                   </h4>
                   <p className="text-xs md:text-sm text-gray-600 leading-snug break-words overflow-wrap-anywhere max-w-none">
-                    Only genuinely interested, qualified owners reach your calendar as scheduled meetings—no
-                    tire-kickers.
+                    Only truly interested, qualified owners reach your pipeline—either as booked meetings or ready-for-next-step opportunities.
                   </p>
                 </button>
               </div>
@@ -741,9 +737,9 @@ export default function Home() {
             {/* Step 1 */}
             <div className="rounded-3xl bg-white shadow-sm border border-[#E5E5E5] px-4 py-5">
               <p className="text-xs font-semibold uppercase tracking-[0.15em] text-neutral-500">Step 01</p>
-              <h3 className="mt-2 text-lg font-semibold text-neutral-900">Tell Us What You're Looking For</h3>
+              <h3 className="mt-2 text-lg font-semibold text-neutral-900">Describe What You're Looking For</h3>
               <p className="mt-1 text-sm text-neutral-700">
-                Describe the exact leads you want using natural language: market, price, property type, timing.
+                Describe the exact deals you want in plain language: market, asset type, size, timing, and who on your team should receive the opportunity.
               </p>
               <div className="mt-4 rounded-2xl bg-neutral-900/5 overflow-hidden p-4">
                 <div className="bg-gray-50 rounded-lg p-3 border border-gray-200">
@@ -757,11 +753,10 @@ export default function Home() {
             <div className="rounded-3xl bg-white shadow-sm border border-[#E5E5E5] px-4 py-5">
               <p className="text-xs font-semibold uppercase tracking-[0.15em] text-neutral-500">Step 02</p>
               <h3 className="mt-2 text-lg font-semibold text-neutral-900">
-                AI Sources Prospects and Captures Inbound Interest
+                RealFlow Detects Owners Most Likely to Transact
               </h3>
               <p className="mt-1 text-sm text-neutral-700">
-                System pulls thousands of matching properties from multiple sources and captures inbound calls, texts,
-                and forms.
+                Using AI, RealFlow scans property data and external triggers to highlight owners with the highest likelihood to sell or refinance.
               </p>
               <div className="mt-4 rounded-2xl bg-neutral-900/5 overflow-hidden p-4">
                 <div className="bg-gray-50 rounded-lg p-3 border border-gray-200">
@@ -774,10 +769,9 @@ export default function Home() {
             {/* Step 3 */}
             <div className="rounded-3xl bg-white shadow-sm border border-[#E5E5E5] px-4 py-5">
               <p className="text-xs font-semibold uppercase tracking-[0.15em] text-neutral-500">Step 03</p>
-              <h3 className="mt-2 text-lg font-semibold text-neutral-900">Multi-Channel Outreach</h3>
+              <h3 className="mt-2 text-lg font-semibold text-neutral-900">Voice AI Runs Multi-Channel Outreach</h3>
               <p className="mt-1 text-sm text-neutral-700">
-                AI calls, texts, emails, drops voicemail, and qualifies each owner across channels based on your
-                criteria.
+                RealFlow's Voice AI works your list for you—calls, SMS, email, and voicemail—while collecting answers, objections, and intent in one place.
               </p>
               <div className="mt-4 rounded-2xl bg-neutral-900/5 overflow-hidden p-4">
                 <div className="bg-orange-100/80 rounded-lg p-3 border border-orange-300">
@@ -792,7 +786,7 @@ export default function Home() {
               <p className="text-xs font-semibold uppercase tracking-[0.15em] text-neutral-500">Step 04</p>
               <h3 className="mt-2 text-lg font-semibold text-neutral-900">Qualified Meetings Booked</h3>
               <p className="mt-1 text-sm text-neutral-700">
-                Only genuinely interested, qualified owners reach your calendar as scheduled meetings—no tire-kickers.
+                Only truly interested, qualified owners reach your pipeline—either as booked meetings or ready-for-next-step opportunities.
               </p>
               <div className="mt-4 rounded-2xl bg-neutral-900/5 overflow-hidden p-4">
                 <div className="bg-green-100/80 rounded-lg p-3 border border-green-400">
@@ -887,7 +881,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Who We Help Section */}
+      {/* Who We Help Section - TEMPORARILY HIDDEN */}
+      {false && (
       <section id="workflows" className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-white border-t border-[#E5E5E5]">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12 sm:mb-16 mt-6">
@@ -1062,6 +1057,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+      )}
 
       {/* Case Studies Section */}
       <section id="case-studies" className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-[#F7F7F7] border-t border-[#E5E5E5]">
@@ -1191,25 +1187,6 @@ export default function Home() {
             </div>
           </div>
           */}
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 bg-black text-white">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif mb-4 sm:mb-6 leading-tight text-balance">
-            Ready to close more deals?
-          </h2>
-          <p className="text-base sm:text-lg text-gray-300 mb-8 sm:mb-10 leading-relaxed">
-            Hop on a 30-minute demo call with our team to learn how RealFlow can start generating qualified meetings in
-            just days.
-          </p>
-          <Button
-            onClick={() => setDemoOpen(true)}
-            className="w-full bg-white text-black hover:bg-gray-100 rounded-full px-8 sm:px-10 py-6 sm:py-7 text-base"
-          >
-            Book a Demo
-          </Button>
         </div>
       </section>
 
@@ -1459,6 +1436,25 @@ export default function Home() {
               </Button>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 bg-black text-white">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif mb-4 sm:mb-6 leading-tight text-balance">
+            Ready to close more deals?
+          </h2>
+          <p className="text-base sm:text-lg text-gray-300 mb-8 sm:mb-10 leading-relaxed">
+            Hop on a 30-minute demo call with our team to learn how RealFlow can start generating qualified meetings in
+            just days.
+          </p>
+          <Button
+            onClick={() => setDemoOpen(true)}
+            className="w-full bg-white text-black hover:bg-gray-100 rounded-full px-8 sm:px-10 py-6 sm:py-7 text-base"
+          >
+            Book a Demo
+          </Button>
         </div>
       </section>
 
