@@ -3,6 +3,7 @@ import type { Metadata } from "next"
 import { Geist, Libre_Baskerville } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import Script from "next/script"
+import RB2BScript from "@/components/RB2BScript"
 import "./globals.css"
 
 const _geist = Geist({ subsets: ["latin"] })
@@ -55,6 +56,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${libreBaskerville.variable} font-sans antialiased`}>
         {children}
+        <RB2BScript />
         <Analytics />
         <Script
           id="warmly-script-loader"
