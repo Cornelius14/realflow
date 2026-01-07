@@ -54,9 +54,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <RB2BScript />
+      </head>
       <body className={`${libreBaskerville.variable} font-sans antialiased`}>
         {children}
-        <RB2BScript />
         <Analytics />
         <Script
           id="warmly-script-loader"
